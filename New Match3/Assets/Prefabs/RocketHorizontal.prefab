@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7771956414500433235}
   - component: {fileID: 7980646772742938284}
   - component: {fileID: 24976623392581573}
+  - component: {fileID: -8248612376007201162}
+  - component: {fileID: -3433379126840422317}
   m_Layer: 0
   m_Name: RocketHorizontal
   m_TagString: Untagged
@@ -111,3 +113,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1377778, y: 1.1377778}
   m_EdgeRadius: 0
+--- !u!114 &-8248612376007201162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3159318416118238970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d710345a7a3574f4f80e9325cf6e0f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialType: {fileID: 0}
+  id: 10
+  dropping: 0
+  dropSpeed: 5
+  x: 0
+  y: 0
+  jointGrids: []
+--- !u!114 &-3433379126840422317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3159318416118238970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49d1b86684128f49b26f624670e6ad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  myGrid: {fileID: 0}
+  jointCount: 0
+  sId: 0
+  direction: 1

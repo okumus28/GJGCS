@@ -1,41 +1,41 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class BombSpecial : ISpecialGridType 
+public class BombSpecial : ISpecialBlockType 
 {
     public int range;
 
     private void Awake()
     {
-        myGrid = GetComponent<Grid>();
+        myBlock = GetComponent<Block>();
     }
 
     public override void BlastItem()
     {
-        for (int i = myGrid.x - range; i <= myGrid.x + range; i++)
+        for (int i = myBlock.x - range; i <= myBlock.x + range; i++)
         {
             if (i < 0 || i > GameManager.Instance.column) continue;
 
-            for (int j = myGrid.y - range; j <= myGrid.y + range; j++)
+            for (int j = myBlock.y - range; j <= myBlock.y + range; j++)
             {
                 if (j < 0 || j > GameManager.Instance.row) continue;
 
-                Grid _grid = GameManager.Instance.grids[i, j];
+                Block _block = GameManager.Instance.blocks[i, j];
 
-                Destroy(_grid.gameObject);
+                _block.id = 15;
+
+                _block.DestroyAnim();
+                //Destroy(_block.gameObject);
             }
         }
     }
 
     public override void CreateItem(int x, int y)
     {
-        myGrid.transform.localPosition = new Vector2(x, y);
-        myGrid.GetComponent<SpriteRenderer>().sortingOrder = y;
-        myGrid.x = x;
-        myGrid.y = y;
-        GameManager.Instance.grids[x, y] = myGrid;
-        myGrid.gameObject.name = x.ToString() + "." + y.ToString();
-        Debug.Log("CREATE");
+        myBlock.transform.localPosition = new Vector2(x, y);
+        myBlock.GetComponent<SpriteRenderer>().sortingOrder = y;
+        myBlock.x = x;
+        myBlock.y = y;
+        GameManager.Instance.blocks[x, y] = myBlock;
+        myBlock.gameObject.name = x.ToString() + "." + y.ToString();
     }
 }

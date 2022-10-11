@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DiscoSpecial : ISpecialGridType
+public class DiscoSpecial : ISpecialBlockType
 {
     public Color32[] colors;
     private void Awake()
     {
-        myGrid = GetComponent<Grid>();
-        x = myGrid.x;
-        y = myGrid.y;
+        myBlock = GetComponent<Block>();
+        x = myBlock.x;
+        y = myBlock.y;
     }
 
     public override void BlastItem()
@@ -18,13 +16,15 @@ public class DiscoSpecial : ISpecialGridType
         {
             for (int j = 0; j < GameManager.Instance.row; j++)
             {
-                Grid g = GameManager.Instance.grids[i, j];
+                Block g = GameManager.Instance.blocks[i, j];
                 if (g.id == sId)
                 {
-                    Destroy(g.gameObject);
+                    g.DestroyAnim();
+                    //Destroy(g.gameObject ,.15f);
                 }
             }
         }
+        Destroy(gameObject);
     }
 
     public override void CreateItem(int x, int y)
@@ -32,10 +32,9 @@ public class DiscoSpecial : ISpecialGridType
         transform.localPosition = new Vector2(x, y);
         GetComponent<SpriteRenderer>().sortingOrder = y;
         GetComponent<SpriteRenderer>().color = colors[sId];
-        myGrid.x = x;
-        myGrid.y = y;
-        GameManager.Instance.grids[x, y] = myGrid;
+        myBlock.x = x;
+        myBlock.y = y;
+        GameManager.Instance.blocks[x, y] = myBlock;
         gameObject.name = x.ToString() + "." + y.ToString();
-        Debug.Log("CREATE");
     }
 }
