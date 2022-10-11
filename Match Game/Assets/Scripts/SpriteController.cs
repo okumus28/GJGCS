@@ -47,7 +47,6 @@ public class SpriteController : MonoBehaviour
         else
         {
             ChangeSprite(def , null);
-            //myBlock.specialType = null;
         }
     }
 

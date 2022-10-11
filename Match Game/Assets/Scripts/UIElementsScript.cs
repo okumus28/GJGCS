@@ -1,10 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIElementsScript : MonoBehaviour
 {
     public static UIElementsScript Instance;
+
+    public GameObject mainMenuPanel;
 
     public bool specialItems;
     [SerializeField] Toggle specialItemsToggle;
@@ -22,6 +25,10 @@ public class UIElementsScript : MonoBehaviour
     [SerializeField] Slider groupASlider;
     [SerializeField] Slider groupBSlider;
     [SerializeField] Slider groupCSlider;
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         columnCountSlider.value = LevelManager.Instance.columnCount;
@@ -30,11 +37,6 @@ public class UIElementsScript : MonoBehaviour
         groupCSlider.value = LevelManager.Instance.c;
         groupBSlider.value = LevelManager.Instance.b;
         groupASlider.value = LevelManager.Instance.a;
-    }
-
-    private void Awake()
-    {
-        Instance = this;
     }
 
     public void CreateSpecialItems()
@@ -93,13 +95,19 @@ public class UIElementsScript : MonoBehaviour
 
     public void PlayButton()
     {
-        GameObject.Find("MainMenu").SetActive(false);
+        mainMenuPanel.SetActive(false);
         GameManager.Instance.SpawnBlocks();
     }
-
     public void MixerButton()
     {
         GameManager.Instance.MixBlocks();
+    }
+
+    public void MainButton()
+    {
+        mainMenuPanel.SetActive(true);
+
+        SceneManager.LoadScene(0);
     }
 
 }

@@ -20,7 +20,6 @@ public class DiscoSpecial : ISpecialBlockType
                 if (g.id == sId)
                 {
                     g.DestroyAnim();
-                    //Destroy(g.gameObject ,.15f);
                 }
             }
         }

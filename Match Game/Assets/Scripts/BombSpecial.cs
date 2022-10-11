@@ -24,7 +24,6 @@ public class BombSpecial : ISpecialBlockType
                 _block.id = 15;
 
                 _block.DestroyAnim();
-                //Destroy(_block.gameObject);
             }
         }
     }

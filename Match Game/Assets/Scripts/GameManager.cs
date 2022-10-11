@@ -25,7 +25,15 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameObject.Find("Canvas").activeSelf == false) SpawnBlocks(); 
+        if (UIElementsScript.Instance.mainMenuPanel.activeSelf == false) SpawnBlocks(); 
+    }
+    public void DestroyChildren()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Destroy(transform.GetChild(i).GetComponent<Block>());
+            Destroy(transform.GetChild(i).gameObject);
+        }
     }
     //create column * row blocks
     public void SpawnBlocks()
@@ -86,6 +94,7 @@ public class GameManager : MonoBehaviour
     public void MoveControl()
     {
         moveCount = 0;
+
         for (int i = 0; i < row; i++)
         {
             for (int j = 0; j < column; j++)
@@ -96,10 +105,11 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        if (moveCount <= 0)
-        {
-            Invoke(nameof(MixBlocks), 1.5f);
-        }
+        if (moveCount > 0) return;
+        else Invoke(nameof(MixBlocks), 1f);
+        //{
+        //    Invoke(nameof(MixBlocks), 1f);
+        //}
     }
     public void MixBlocks()
     {
@@ -119,14 +129,11 @@ public class GameManager : MonoBehaviour
 
                 b.MixedBlock(i,j);
 
-                //b.lastDestroy = i == row - 1 && j == column - 1;
-
                 affectedBlocks.RemoveAt(rnd);
             }
         }
 
         AllBlockControl();
-        //MoveControl();
     }
     void MixBlocksToList()
     {
@@ -135,7 +142,6 @@ public class GameManager : MonoBehaviour
             for (int j = 0; j < column; j++)
             {
                 affectedBlocks.Add(blocks[i, j]);
-                //blocks[i, j] = null;
             }
         }
     }
@@ -149,9 +155,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        AffectedBlocksControl();
+
         blocks[row - 1, column - 1].lastDestroy = true;
         blocks[row - 1, column - 1].dropping = true;
 
-        AffectedBlocksControl();
     }
 }

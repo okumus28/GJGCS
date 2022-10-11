@@ -43,8 +43,8 @@ public class Block : MonoBehaviour
 
                 if (lastDestroy)
                 {
-                    GameManager.Instance.MoveControl();
                     lastDestroy = false;
+                    GameManager.Instance.MoveControl();
                 }
             }
         }
