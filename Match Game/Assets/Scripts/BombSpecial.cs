@@ -22,7 +22,6 @@ public class BombSpecial : ISpecialBlockType
                 Block _block = GameManager.Instance.blocks[i, j];
 
                 _block.id = 15;
-
                 _block.DestroyAnim();
             }
         }

@@ -27,14 +27,7 @@ public class GameManager : MonoBehaviour
     {
         if (UIElementsScript.Instance.mainMenuPanel.activeSelf == false) SpawnBlocks(); 
     }
-    public void DestroyChildren()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            Destroy(transform.GetChild(i).GetComponent<Block>());
-            Destroy(transform.GetChild(i).gameObject);
-        }
-    }
+    
     //create column * row blocks
     public void SpawnBlocks()
     {
@@ -106,7 +99,7 @@ public class GameManager : MonoBehaviour
             }
         }
         if (moveCount > 0) return;
-        else Invoke(nameof(MixBlocks), 1f);
+        else Invoke(nameof(MixBlocks), .75f);
         //{
         //    Invoke(nameof(MixBlocks), 1f);
         //}

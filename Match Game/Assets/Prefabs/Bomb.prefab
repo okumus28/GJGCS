@@ -125,13 +125,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d710345a7a3574f4f80e9325cf6e0f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specialType: {fileID: 0}
+  specialObject: {fileID: 0}
   id: 9
   dropping: 0
   dropSpeed: 5
   x: 0
   y: 0
-  jointGrids: []
+  neighborsBlocks: []
+  lastDestroy: 0
 --- !u!114 &-7993886139939600095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
-  myGrid: {fileID: 0}
-  jointCount: 0
+  myBlock: {fileID: 0}
   sId: 0
-  range: 1
+  range: 3

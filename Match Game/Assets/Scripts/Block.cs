@@ -115,7 +115,7 @@ public class Block : MonoBehaviour
     public void NewPosAnim(int x , int y)
     {
         Vector3 newPos = new Vector3(LevelManager.Instance.rowCount / 2, LevelManager.Instance.columnCount / 2, 0);
-        DOTween.To(() => newPos , a => transform.localPosition = a, new Vector3(x, y, 0), 40 * Time.deltaTime);
+        DOTween.To(() => newPos , a => transform.localPosition = a, new Vector3(x, y, 0), 100 * Time.deltaTime);
     }
     public void DestroyAnim()
     {
