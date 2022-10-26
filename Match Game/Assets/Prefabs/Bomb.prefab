@@ -149,4 +149,4 @@ MonoBehaviour:
   y: 0
   myBlock: {fileID: 0}
   sId: 0
-  range: 3
+  range: 1
